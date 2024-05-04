@@ -24,6 +24,10 @@ class DB():
         self.reffs = result[0][4]
 
 
+    def name_changer(self, user_id, name, surname):
+        self.cursor.execute('UPDATE users SET name = ?, surname = ? WHERE id = ?', (name, surname, user_id))
+
+
     def __del__(self) -> None:
         self.conn.commit()
         self.conn.close()
@@ -47,10 +51,4 @@ class DB():
 # print(cursor.fetchall())
 
 
-
-# cursor.execute(f'SELECT * FROM users WHERE id = {1108204259}')
-# result = cursor.fetchall()
-
-# name = result[0][4]
-# print(name)
 
